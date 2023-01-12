@@ -1,8 +1,10 @@
-function Box () {
+function Box (props) {
     return (
-        <p>
-            "I'm a box"
-        </p>
+        <div 
+            className="swatch"
+            background={props[0]} >
+            colors
+        </div>
     )
 }
 
