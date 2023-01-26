@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState }  from 'react';
 
 import './App.css';
 import { createTheme } from '@mui/material/styles';
@@ -20,6 +20,25 @@ const theme = createTheme({
 
 
 function App() {
+
+  const [apiCall, setApiCall] = useState()
+
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '87cf04f455mshd260e6df25f60bap1b8868jsne2efda3b987d',
+        'X-RapidAPI-Host': 'drinks-digital1.p.rapidapi.com'
+      }
+    };
+    
+    fetch('https://drinks-digital1.p.rapidapi.com/v1/cocktails?limit=2', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .then(response => setApiCall(response))
+      .catch(err => console.error(err));
+  })
+
   return (
     <body>
       <h2>Nothing for now</h2>
@@ -28,7 +47,7 @@ function App() {
         variant="outlined"
         size="small"
         >
-          boop
+          boopeeedoo
       </Button>
     </body>
   );
